@@ -1,7 +1,7 @@
-const Student = (data) => {
-    const student = data?.student;
+const Student = ({ key, student, setStudent }) => {
     return (
         <div className="student-card"
+            onClick={() => setStudent(student)}
             data-id={student.Id}
             data-name={student.Name}>
             <img src={`../images/student/collection/${student.Id}.webp`}
@@ -16,17 +16,17 @@ const Student = (data) => {
             <span className={`badge hover rarity rarity-${student.StarGrade}`}>
                 <img src={`../images/ui/Common_Icon_Formation_Star_R${student.StarGrade}.png`}
                     width='22' height='22'
-                    alt={`Start ${student.StarGrade}`} />
+                    alt={`Star ${student.StarGrade}`} />
             </span>
             <span className={`badge hover attack-type ${student.BulletType}`}>
                 <img src={`../images/ui/Type_Attack.png`}
                     width='15' height='15'
-                    alt={`Start ${student.StarGrade}`} />
+                    alt={`${student.BulletType}`} />
             </span>
             <span className={`badge hover defense-type ${student.ArmorType}`}>
                 <img src={`../images/ui/Type_Defense.png`}
                     width='16' height='16'
-                    alt={`Start ${student.StarGrade}`} />
+                    alt={`${student.ArmorType}`} />
             </span>
         </div>
     );

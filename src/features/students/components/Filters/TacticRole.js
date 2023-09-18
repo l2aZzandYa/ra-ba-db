@@ -29,10 +29,10 @@ const TacticRole = (props) => {
             <div className='control'>
                 <input type='checkbox'
                     onChange={(e) => props.set('role', e.target.checked ? e.target.value : null)}
-                    checked={props.get('role') === 'support'}
+                    checked={props.get('role') === 'supporter'}
                     id='support-role-filter'
-                    value='support' />
-                <label for='support-role-filter'>Support</label>
+                    value='supporter' />
+                <label for='support-role-filter'>Supporter</label>
             </div>
             <div className='control'>
                 <input type='checkbox'

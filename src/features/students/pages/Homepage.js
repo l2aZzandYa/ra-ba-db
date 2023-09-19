@@ -1,3 +1,4 @@
+import React from 'react';
 import StudentList from "../components/StudentList";
 import Popup from '../components/Popup';
 import { useState } from "react";
@@ -5,9 +6,9 @@ import { useState } from "react";
 export default function Homepage() {
     const [student, setStudent] = useState({});
     return (
-        <section className="main">
+        <React.Fragment>
             <StudentList {...{ setStudent }} />
             <Popup {...{ student, setStudent }} />
-        </section>
+        </React.Fragment>
     );
 }

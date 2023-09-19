@@ -4,6 +4,7 @@ import TacticRole from "./Filters/TacticRole";
 import Rarity from "./Filters/Rarity";
 import AttackType from "./Filters/AttackType";
 import DefenseType from "./Filters/DefenseType";
+import Owned from "./Filters/Owned";
 
 const Filters = ({ conditions, setConditions }) => {
     const get = (key) => {
@@ -16,6 +17,7 @@ const Filters = ({ conditions, setConditions }) => {
     return (
         <section className="filters">
             <SearchBar {...{ get, set }} />
+            <Owned {...{ get, set }} />
             <Type {...{ get, set }} />
             <TacticRole {...{ get, set }} />
             <Rarity {...{ get, set }} />

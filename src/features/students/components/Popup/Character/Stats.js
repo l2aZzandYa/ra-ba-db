@@ -1,105 +1,70 @@
-import { useState } from "react";
-import Localization from "../../../services/Localization";
-import Attributes from "./Attributes";
+import _ from 'lodash';
+import t from "../../../i18n";
+import CharacterStats from '../../../services/CharacterStats';
 
-const CharacterStats = ({ student, storage, setStorage }) => {
-    const [state, setState] = useState(0),
-        get = (key) => {
-            return storage[key];
-        }, set = (key, value) => {
-            const newStorage = { ...{}, ...storage };
-            newStorage[key] = value;
-            setStorage(newStorage);
-        },
-        allStates = [
-            {
-                index: 0,
-                label: 'Arributes'
-            },
-            {
-                index: 1,
-                label: 'Skills'
-            },
-            {
-                index: 2,
-                label: 'Weapon'
-            },
-            {
-                index: 3,
-                label: 'Profile'
+const Stats = ({ student, studentConfig }) => {
+    const studentStatList = ['MaxHP', 'AttackPower', 'DefensePower', 'HealPower',
+        'AccuracyPoint', 'DodgePoint', 'CriticalPoint', 'CriticalChanceResistPoint',
+        'CriticalDamageRate', 'CriticalDamageResistRate', 'StabilityPoint', 'Range',
+        'OppressionPower', 'OppressionResist', 'HealEffectivenessRate', 'AmmoCount'],
+        charStats = new CharacterStats(
+            student,
+            _.get(studentConfig, 'level.0', 1),
+            _.get(studentConfig, 'rarity.0.0', 1)
+        ),
+        getBondStats = () => {
+            let stat1 = 0, stat2 = 0;
+            const level = _.get(studentConfig, 'bond', 1);
+            for (let i = 1; i < Math.min(level, 50); i++) {
+                if (i < 20) {
+                    stat1 += student.FavorStatValue[Math.floor(i / 5)][0]
+                    stat2 += student.FavorStatValue[Math.floor(i / 5)][1]
+                } else if (i < 50) {
+                    stat1 += student.FavorStatValue[2 + Math.floor(i / 10)][0]
+                    stat2 += student.FavorStatValue[2 + Math.floor(i / 10)][1]
+                }
             }
-        ],
-        StatControlRender = () => {
-            return allStates.map((item) => {
-                return (
-                    <li onClick={() => setState(item.index)}
-                        className={state === item.index ? 'selected' : ''}>{item.label}</li>
-                )
+            return { [student.FavorStatType[0]]: stat1, [student.FavorStatType[1]]: stat2 }
+        },
+        calcStats = () => {
+            const equipments = _.get(studentConfig, 'equipment', {}),
+                gearLevel = _.get(studentConfig, `gear.${student.Gear.Name}.0`),
+                weaponLevel = _.get(studentConfig, 'rarity.0.1'),
+                bondStats = getBondStats();
+
+            _.each(equipments, (levels, type) => {
+                if (levels[0] >= 1) charStats.addEquipmentBonuses(type, levels[0]);
             });
-        },
-        StatRender = () => {
-            switch (state) {
-                case 1:
-                    return <Skills />;
-                case 2:
-                    return <Weapon />;
-                case 3:
-                    return <Profile />;
-                default:
-                    return <Attributes {...{ student, get, set }} />;
+            if (gearLevel) {
+                charStats.addGearBonuses(student.Gear);
             }
-        },
-        Skills = () => {
-            return (
-                <div className="skills">
-                    <div className="stat name">skills</div>
-                </div>
-            );
-        },
-        Weapon = () => {
-            return (
-                <div className="weapon">
-                    <div className="stat name">weapon</div>
-                </div>
-            );
-        },
-        Profile = () => {
-            return (
-                <div className="profile">
-                    <div className="stat name">profile</div>
-                </div>
-            );
+            if (weaponLevel >= 1) {
+                charStats.addWeaponBonuses(student.Weapon, (weaponLevel + 2) * 10);
+            }
+            for (let stat in bondStats) {
+                charStats.addBuff(stat, bondStats[stat])
+            }
         };
+
+    if (student.Id) calcStats();
+
     return (
-        <div className="stats">
-            <div className="row">
-                <div className="school floatRight">
-                    <img src={`../images/schoolicon/School_Icon_${student.School?.toUpperCase()}_W.png`}
-                        width='100' height='90'
-                        alt={`${student.School}`} />
-                </div>
-                <div className="name">
-                    <h1 className="studentName">{student.Name}</h1>
-                </div>
-                <div className="stat rarity">
-                    <img src={`../images/ui/Common_Icon_Formation_Star_R${student.StarGrade}.png`}
-                        width='22' height='22'
-                        alt={`Star ${student.StarGrade}`} />
-                </div>
-                <div className={`stat squad-type ${student.SquadType}`}>
-                    {Localization(['SquadType', student.SquadType])}
-                </div>
-            </div>
-            <div className="row">
-                <ul className="stat-control flex-one-line">
-                    <StatControlRender />
-                </ul>
-            </div>
-            <div className="row">
-                <StatRender />
+        <div className="row">
+            <div className="stats-table">
+                {studentStatList.map((stat) => {
+                    return (
+                        <div className="stat-line">
+                            <img src={`../images/staticon/Stat_${stat}.png`}
+                                alt={stat}
+                                width={26} height={26} />
+                            <span class="stat-label">{t(`Stat.${stat}`)}</span>
+                            <span className="stat-value">{charStats.getTotal(stat)}</span>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );
-};
+}
 
-export default CharacterStats;
+export default Stats;

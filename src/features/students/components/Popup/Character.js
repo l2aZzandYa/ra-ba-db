@@ -1,5 +1,5 @@
 import useStorage from "../../hooks/useStorage";
-import CharacterStats from "./Character/Stats";
+import CharacterStats from "./Character/View";
 
 const Character = ({ student }) => {
     const [storage, setStorage] = useStorage('schale_character_storage', {});
@@ -11,7 +11,7 @@ const Character = ({ student }) => {
                     alt={student.Name} />
             </div>
             <div className="character-content">
-                <CharacterStats {...{ student, storage, setStorage }} />
+                <CharacterStats {...{ student }} />
             </div>
         </div>
     );

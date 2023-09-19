@@ -26,7 +26,7 @@
 }
 
 .character-content {
-    background-color: rgb(0, 0, 0, 0.65);
+    background-color: rgb(0, 0, 0, 0.4);
     padding: 20px;
     position: relative;
     z-index: 1;
@@ -129,6 +129,7 @@
 
         .equipment-selection {
             position: absolute;
+            z-index: 9999;
             background-color: rgb(140, 147, 158);
             display: flex;
             flex-flow: row;
@@ -144,14 +145,16 @@
                 top: -10px;
             }
 
-            > div {
+            >div {
                 display: flex;
                 flex-flow: column;
                 text-align: center;
             }
 
             img {
-                &:hover, &.selected {
+
+                &:hover,
+                &.selected {
                     background-color: rgb(255, 255, 255, 0.6);
                 }
             }
@@ -171,5 +174,92 @@
     &.Mystic,
     &.Unarmed {
         background-color: vc.$special;
+    }
+}
+
+.student-level,
+.student-bond-level {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+
+    .horizontal-slider {
+        flex-grow: 1;
+        height: 30px;
+    }
+
+    .stat {
+        margin: 0 0 0 10px;
+        min-width: 60px;
+        justify-content: center;
+    }
+}
+
+.student-bond-level {
+    .stat {
+        min-width: 100px;
+    }
+
+    .thumb {
+        background-color: rgb(183, 85, 169);
+        color: #fff;
+    }
+
+    .track {
+        background-color: pink;
+
+        &.track-0,
+        &.track-2 {
+            background-color: rgb(219, 131, 206);
+        }
+    }
+}
+
+.rarity-selection {
+
+    .level,
+    .ue {
+        color: rgb(255, 201, 51);
+    }
+
+    .ue {
+        filter: grayscale(0) hue-rotate(150deg);
+    }
+
+    >span:nth-child(6) {
+        margin-left: 10px;
+    }
+
+    &.target {
+
+        .level,
+        .ue {
+            color: rgb(51, 255, 68);
+        }
+    }
+}
+
+.stats-table {
+    @include mc.grid(none, repeat(2, 1fr), 10px, 10px, 20px);
+    background-color: rgb(0, 0, 0, 0.65);
+    padding: 20px;
+
+    .stat-line {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .stat-value {
+        flex: 1;
+        text-align: right;
+        font-weight: 700;
+    }
+}
+
+.rc-switch {
+    &.owned-switch {
+        vertical-align: middle;
+        margin: 0 0 0 20px;
     }
 }

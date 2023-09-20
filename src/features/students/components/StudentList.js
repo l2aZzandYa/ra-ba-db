@@ -4,20 +4,28 @@ import Filters from "../components/Filters";
 import useStorage from "../hooks/useStorage";
 import useStorageRaw from "../hooks/useStorageRaw";
 import _ from 'lodash';
+import { useState } from 'react';
+import useOutsideClick from '../hooks/useOutsideClick';
 
 const StudentList = ({ setStudent }) => {
     const [data] = Students(),
+        [filterState, setFilterState] = useState(),
         [conditions, setConditions] = useStorage('schale_filter_conditions', {}),
         owned = useStorageRaw('schale_character_owned', []),
         characters = useStorageRaw('schale_character_storage', []),
-        styles = !_.isEmpty(data) ? {
-            backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/${_.sample(data).CollectionBG}.jpg)`,
+        styles = {
+            backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/BG_CraftChamber_Night.jpg)`,
             backgroundAttachment: 'fixed'
-        } : {};
+        },
+        filterRef = useOutsideClick(() => setFilterState(null));
 
     return (
-        <section className='main' style={styles}>
-            <Filters {...{ conditions, setConditions }} />
+        <section className={`main ${filterState ? 'filter-active' : ''}`} style={styles}>
+            <div className='filter-icon' onClick={() => setFilterState(true)}>
+                <img src={`${process.env.PUBLIC_URL}/images/icon/schaledb-192.png`}
+                    width={`40px`} height={`40px`} />
+            </div>
+            <Filters {...{ conditions, setConditions, filterRef }} />
             <section className='grid'>
                 {data?.filter(student => !conditions.name
                     || student.Name.toLowerCase().includes(conditions.name.toLowerCase()))

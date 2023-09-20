@@ -2,7 +2,8 @@
 @use '../variables' as vc;
 
 .character {
-    @include mc.grid(none, repeat(2, 1fr), 20px);
+    display: flex;
+    flex-flow: column;
 
     >div {
         padding: 20px;
@@ -18,11 +19,7 @@
 .character-image {
     display: flex;
     justify-content: center;
-
-    img {
-        position: fixed;
-        height: calc(100vh - 56px - 3rem);
-    }
+    height: 70vh;
 }
 
 .character-content {
@@ -39,11 +36,11 @@
         flex: 1;
         vertical-align: middle;
         background-color: rgb(255, 255, 255, 0.65);
-        font-weight: 700;
-        height: 40px;
+        font-size: 12px;
+        height: 30px;
         display: inline-flex;
         align-items: center;
-        padding: 0.5rem 1rem 0.5rem 1rem;
+        padding: 0.5rem;
         white-space: nowrap;
         cursor: pointer;
         margin: 0 6px 6px 0;
@@ -54,6 +51,30 @@
         &:hover,
         &.selected {
             background-color: rgb(255, 255, 255, 1);
+        }
+    }
+}
+
+@include mc.desktop {
+    .character {
+        @include mc.grid(none, repeat(2, 1fr), 20px);
+    }
+
+    .character-image {
+        height: auto;
+
+        img {
+            position: fixed;
+            height: calc(100vh - 56px - 3rem);
+        }
+    }
+
+    .stat-control {
+        li {
+            font-size: 16px;
+            font-weight: 700;
+            height: 40px;
+            padding: 0.5rem 1rem 0.5rem 1rem;
         }
     }
 }
@@ -95,6 +116,7 @@
     &.weapon {
         align-items: flex-start;
         height: 90px;
+        max-width: 168px;
     }
 
     &.equipments {
@@ -261,5 +283,17 @@
     &.owned-switch {
         vertical-align: middle;
         margin: 0 0 0 20px;
+    }
+}
+
+.configurable {
+    > .row.flex-one-line {
+        flex-direction: column;
+    }
+
+    @include mc.desktop {
+        > .row.flex-one-line {
+            flex-direction: row;
+        }
     }
 }

@@ -6,7 +6,7 @@ import AttackType from "./Filters/AttackType";
 import DefenseType from "./Filters/DefenseType";
 import Owned from "./Filters/Owned";
 
-const Filters = ({ conditions, setConditions }) => {
+const Filters = ({ conditions, setConditions, filterRef }) => {
     const get = (key) => {
         return conditions[key];
     }, set = (key, value) => {
@@ -15,7 +15,7 @@ const Filters = ({ conditions, setConditions }) => {
         setConditions(newConditions);
     };
     return (
-        <section className="filters">
+        <section className="filters" ref={filterRef}>
             <SearchBar {...{ get, set }} />
             <Owned {...{ get, set }} />
             <Type {...{ get, set }} />

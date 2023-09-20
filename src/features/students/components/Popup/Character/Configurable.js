@@ -5,6 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
 import ReactSlider from 'react-slider';
 import _ from 'lodash';
+import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const Configurable = ({ student, studentConfig, setStudentConfig, storage, setStorage }) => {
     const maxEquipmentLevel = 7,
@@ -25,20 +26,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
             storage[student.Id] = studentConfig;
             setStorage({ ...storage });
         },
-        popupRef = useRef(null);
-
-    useEffect(() => {
-        function handleClickOutside(e) {
-            if (popupRef.current && !popupRef.current.contains(e.target)) {
-                setEqActive(null);
-            }
-        }
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, [popupRef]);
+        popupRef = useOutsideClick(() => setEqActive(null));
 
     return (
         <div className='configurable'>

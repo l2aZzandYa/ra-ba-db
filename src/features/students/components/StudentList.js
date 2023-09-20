@@ -11,7 +11,7 @@ const StudentList = ({ setStudent }) => {
         owned = useStorageRaw('schale_character_owned', []),
         characters = useStorageRaw('schale_character_storage', []),
         styles = !_.isEmpty(data) ? {
-            backgroundImage: `url(../images/background/${_.sample(data).CollectionBG}.jpg)`,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/${_.sample(data).CollectionBG}.jpg)`,
             backgroundAttachment: 'fixed'
         } : {};
 

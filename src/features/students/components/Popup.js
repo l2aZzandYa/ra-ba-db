@@ -2,7 +2,7 @@ import Character from "./Popup/Character";
 
 const Popup = ({ student, setStudent }) => {
     const overlayStyles = student.Id ? {
-        backgroundImage: `url(../images/background/${student.CollectionBG}.jpg)`,
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/background/${student.CollectionBG}.jpg)`,
         backgroundSize: 'cover'
     } : {};
     return (

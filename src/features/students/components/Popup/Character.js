@@ -7,7 +7,7 @@ const Character = ({ student }) => {
     return (
         <div className="character">
             <div className="character-image">
-                <img src={`../images/student/portrait/${student.Id}.webp`}
+                <img src={`${process.env.PUBLIC_URL}/images/student/portrait/${student.Id}.webp`}
                     alt={student.Name} />
             </div>
             <div className="character-content">

@@ -9,7 +9,7 @@ const Rarity = (props) => {
                     id='one-star-rarity-filter'
                     value='1' />
                 <label for='one-star-rarity-filter'>
-                    <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                         width='22' height='22'
                         alt={`Star Grade`} />
                 </label>
@@ -23,7 +23,7 @@ const Rarity = (props) => {
                 <label for='two-star-rarity-filter'>
                     {[...Array(2)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
@@ -39,7 +39,7 @@ const Rarity = (props) => {
                 <label for='three-star-rarity-filter'>
                     {[...Array(3)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
@@ -55,7 +55,7 @@ const Rarity = (props) => {
                 <label for='four-star-rarity-filter'>
                     {[...Array(4)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
@@ -71,7 +71,7 @@ const Rarity = (props) => {
                 <label for='five-star-rarity-filter'>
                     {[...Array(5)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
@@ -87,14 +87,14 @@ const Rarity = (props) => {
                 <label for='six-star-rarity-filter'>
                     {[...Array(5)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
                     })}
                     {[...Array(1)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star_2.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star_2.png`}
                                 width='22' height='22'
                                 alt={`UE Star Grade`} />
                         );
@@ -110,14 +110,14 @@ const Rarity = (props) => {
                 <label for='seven-star-rarity-filter'>
                     {[...Array(5)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
                     })}
                     {[...Array(2)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star_2.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star_2.png`}
                                 width='22' height='22'
                                 alt={`UE Star Grade`} />
                         );
@@ -133,14 +133,14 @@ const Rarity = (props) => {
                 <label for='eight-star-rarity-filter'>
                     {[...Array(5)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star.png`}
                                 width='22' height='22'
                                 alt={`Star Grade`} />
                         );
                     })}
                     {[...Array(3)].map((i) => {
                         return (
-                            <img src={`../images/ui/Common_Icon_Formation_Star_2.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star_2.png`}
                                 width='22' height='22'
                                 alt={`UE Star Grade`} />
                         );

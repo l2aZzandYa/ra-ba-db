@@ -30,44 +30,44 @@ const Attributes = ({ student }) => {
             <div className="row">
                 <div className={`terrains floatRight`}>
                     <div className={`stat vertical terrain`}>
-                        <img src={`../images/ui/Terrain_Street.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/Terrain_Street.png`}
                             width='30' height='30'
                             alt={`Street`} />
-                        <img src={`../images/ui/${TerrainRender(student.StreetBattleAdaptation)}.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/${TerrainRender(student.StreetBattleAdaptation)}.png`}
                             width='30' height='30'
                             alt={`Adaptation ${student.StreetBattleAdaptation}`} />
                     </div>
                     <div className={`stat vertical terrain`}>
-                        <img src={`../images/ui/Terrain_Outdoor.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/Terrain_Outdoor.png`}
                             width='30' height='30'
                             alt={`Outdoor`} />
-                        <img src={`../images/ui/${TerrainRender(student.OutdoorBattleAdaptation)}.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/${TerrainRender(student.OutdoorBattleAdaptation)}.png`}
                             width='30' height='30'
                             alt={`Adaptation ${student.OutdoorBattleAdaptation}`} />
                     </div>
                     <div className={`stat vertical terrain`}>
-                        <img src={`../images/ui/Terrain_Indoor.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/Terrain_Indoor.png`}
                             width='30' height='30'
                             alt={`Indoor`} />
-                        <img src={`../images/ui/${TerrainRender(student.IndoorBattleAdaptation)}.png`}
+                        <img src={`${process.env.PUBLIC_URL}/images/ui/${TerrainRender(student.IndoorBattleAdaptation)}.png`}
                             width='30' height='30'
                             alt={`Adaptation ${student.IndoorBattleAdaptation}`} />
                     </div>
                 </div>
                 <div className={`stat tactic-role ${student.TacticRole}`}>
-                    <img src={`../images/ui/Role_${student.TacticRole}.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/ui/Role_${student.TacticRole}.png`}
                         width='26' height='26'
                         alt={student.TacticRole} />
                     <span>{t(`TacticRole.${student.TacticRole}`)}</span>
                 </div>
                 <div className={`stat attack-type ${student.BulletType}`}>
-                    <img src={`../images/ui/Type_Attack.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/ui/Type_Attack.png`}
                         width='20' height='20'
                         alt={student.BulletType} />
                     <span>{t(`BulletType.${student.BulletType}`)}</span>
                 </div>
                 <div className={`stat defense-type ${student.ArmorType}`}>
-                    <img src={`../images/ui/Type_Defense.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/ui/Type_Defense.png`}
                         width='20' height='20'
                         alt={student.ArmorType} />
                     <span>{t(`ArmorType.${student.ArmorType}`)}</span>
@@ -76,7 +76,7 @@ const Attributes = ({ student }) => {
                     <span>{student.Position}</span>
                 </div>
                 <div className={`stat club ${student.Club}`}>
-                    <img src={`../images/schoolicon/School_Icon_${student.School?.toUpperCase()}_W.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/schoolicon/School_Icon_${student.School?.toUpperCase()}_W.png`}
                         width='26' height='26'
                         alt={`${student.School}`} />
                     <span>{t(`Club.${student.Club}`)}</span>

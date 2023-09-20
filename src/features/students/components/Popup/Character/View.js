@@ -71,7 +71,7 @@ const CharacterStats = ({ student }) => {
         <div className="stats">
             <div className="row">
                 <div className="school floatRight">
-                    <img src={`../images/schoolicon/School_Icon_${student.School?.toUpperCase()}_W.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/schoolicon/School_Icon_${student.School?.toUpperCase()}_W.png`}
                         width='100' height='90'
                         alt={`${student.School}`} />
                 </div>
@@ -84,7 +84,7 @@ const CharacterStats = ({ student }) => {
                         }))} />
                 </div>
                 <div className="stat rarity">
-                    <img src={`../images/ui/Common_Icon_Formation_Star_R${student.StarGrade}.png`}
+                    <img src={`${process.env.PUBLIC_URL}/images/ui/Common_Icon_Formation_Star_R${student.StarGrade}.png`}
                         width='22' height='22'
                         alt={`Star ${student.StarGrade}`} />
                 </div>

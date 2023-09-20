@@ -54,7 +54,7 @@ const Stats = ({ student, studentConfig }) => {
                 {studentStatList.map((stat) => {
                     return (
                         <div className="stat-line">
-                            <img src={`../images/staticon/Stat_${stat}.png`}
+                            <img src={`${process.env.PUBLIC_URL}/images/staticon/Stat_${stat}.png`}
                                 alt={stat}
                                 width={26} height={26} />
                             <span class="stat-label">{t(`Stat.${stat}`)}</span>

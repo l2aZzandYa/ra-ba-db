@@ -45,7 +45,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
             <div className='row flex-one-line'>
                 <div className="stat vertical weapon">
                     <span>{student.WeaponType}</span>
-                    <img src={`../images/weapon/${student.WeaponImg}.webp`}
+                    <img src={`${process.env.PUBLIC_URL}/images/weapon/${student.WeaponImg}.webp`}
                         width='160' height='41'
                         alt={`${student.WeaponType}`} />
                 </div>
@@ -53,7 +53,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
                     {student.Equipment ? student.Equipment.map((eq) => {
                         return (
                             <div className={`equipment ${eq} ${eqActive === eq ? 'active' : ''}`}>
-                                <img src={`../images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${_.get(studentConfig, `equipment.${eq}.0`) || '1'}.webp`}
+                                <img src={`${process.env.PUBLIC_URL}/images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${_.get(studentConfig, `equipment.${eq}.0`) || '1'}.webp`}
                                     width='64' height='64'
                                     className={!_.get(studentConfig, `equipment.${eq}.0`) ? 'no-equiped' : ''}
                                     onClick={(e) => eqActive !== eq ? setEqActive(eq) : setEqActive(null)}
@@ -62,7 +62,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
                                     <div className="current">
                                         <span>Current</span>
                                         {[...Array(maxEquipmentLevel)].map((x, i) =>
-                                            <img src={`../images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${i + 1}.webp`}
+                                            <img src={`${process.env.PUBLIC_URL}/images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${i + 1}.webp`}
                                                 width='64' height='64'
                                                 className={`${_.get(studentConfig, `equipment.${eq}.0`) === (i + 1) ? 'selected' : ''}`}
                                                 onClick={() => updateStorage(`equipment.${eq}.0`, i + 1)}
@@ -72,7 +72,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
                                     <div className="target">
                                         <span>Target</span>
                                         {[...Array(maxEquipmentLevel)].map((x, i) =>
-                                            <img src={`../images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${i + 1}.webp`}
+                                            <img src={`${process.env.PUBLIC_URL}/images/equipment/icon/equipment_icon_${eq.toLowerCase()}_tier${i + 1}.webp`}
                                                 width='64' height='64'
                                                 className={`${_.get(studentConfig, `equipment.${eq}.1`) === (i + 1) ? 'selected' : ''}`}
                                                 onClick={() => updateStorage(`equipment.${eq}.1`, i + 1)}
@@ -84,19 +84,19 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
                         );
                     }) : ''}
                     {student.Gear?.Name ? <div className={`equipment gear ${eqActive === student.Gear.Name ? 'active' : ''}`}>
-                        <img src={studentConfig.gear?.[student.Gear.Name]?.[0] ? `../images/gear/icon/${student.Id}.webp` : `../images/gear/empty.png`}
+                        <img src={studentConfig.gear?.[student.Gear.Name]?.[0] ? `${process.env.PUBLIC_URL}/images/gear/icon/${student.Id}.webp` : `${process.env.PUBLIC_URL}/images/gear/empty.png`}
                             width='64' height='64'
                             className={!_.get(studentConfig, `gear.${student.Gear.Name}.0`) ? 'no-equiped' : ''}
                             onClick={(e) => eqActive !== student.Gear.Name ? setEqActive(student.Gear.Name) : setEqActive(null)}
                             alt={student.Gear.Name} />
                         <div className="equipment-selection">
                             <div className="current">
-                                <img src={`../images/gear/empty.png`}
+                                <img src={`${process.env.PUBLIC_URL}/images/gear/empty.png`}
                                     width='64' height='64'
                                     onClick={() => updateStorage(`gear.${student.Gear.Name}.0`, null)}
                                     alt="Empty" />
                                 {[...Array(maxGearLevel)].map((x, i) =>
-                                    <img src={`../images/gear/icon/${student.Id}.webp`}
+                                    <img src={`${process.env.PUBLIC_URL}/images/gear/icon/${student.Id}.webp`}
                                         width='64' height='64'
                                         className={`${_.get(studentConfig, `gear.${student.Gear.Name}.0`) === (i + 1) ? 'selected' : ''}`}
                                         onClick={() => updateStorage(`gear.${student.Gear.Name}.0`, i + 1)}

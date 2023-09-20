@@ -23,7 +23,7 @@
 }
 
 .character-content {
-    background-color: rgb(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 20px;
     position: relative;
     z-index: 1;
@@ -35,7 +35,7 @@
     li {
         flex: 1;
         vertical-align: middle;
-        background-color: rgb(255, 255, 255, 0.65);
+        background-color: rgba(255, 255, 255, 0.65);
         font-size: 12px;
         height: 30px;
         display: inline-flex;
@@ -50,7 +50,7 @@
 
         &:hover,
         &.selected {
-            background-color: rgb(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 1);
         }
     }
 }
@@ -81,7 +81,7 @@
 
 .stat {
     vertical-align: middle;
-    background-color: rgb(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.65);
     font-weight: 600;
     height: 32px;
     display: inline-flex;
@@ -127,7 +127,7 @@
         padding: 0;
 
         .equipment {
-            background-color: rgb(140, 147, 158);
+            background-color: rgba(140, 147, 158);
             border-radius: 999px;
             cursor: pointer;
             margin: 10px;
@@ -152,7 +152,7 @@
         .equipment-selection {
             position: absolute;
             z-index: 9999;
-            background-color: rgb(140, 147, 158);
+            background-color: rgba(140, 147, 158);
             display: flex;
             flex-flow: row;
             margin-top: 10px;
@@ -160,7 +160,7 @@
             &:before {
                 content: '';
                 display: inline-block;
-                background-color: rgb(140, 147, 158);
+                background-color: rgba(140, 147, 158);
                 width: 64px;
                 height: 10px;
                 position: absolute;
@@ -177,7 +177,7 @@
 
                 &:hover,
                 &.selected {
-                    background-color: rgb(255, 255, 255, 0.6);
+                    background-color: rgba(255, 255, 255, 0.6);
                 }
             }
         }
@@ -223,7 +223,7 @@
     }
 
     .thumb {
-        background-color: rgb(183, 85, 169);
+        background-color: rgba(183, 85, 169);
         color: #fff;
     }
 
@@ -232,7 +232,7 @@
 
         &.track-0,
         &.track-2 {
-            background-color: rgb(219, 131, 206);
+            background-color: rgba(219, 131, 206);
         }
     }
 }
@@ -241,7 +241,7 @@
 
     .level,
     .ue {
-        color: rgb(255, 201, 51);
+        color: rgba(255, 201, 51);
     }
 
     .ue {
@@ -256,14 +256,14 @@
 
         .level,
         .ue {
-            color: rgb(51, 255, 68);
+            color: rgba(51, 255, 68);
         }
     }
 }
 
 .stats-table {
     @include mc.grid(none, repeat(2, 1fr), 10px, 10px, 20px);
-    background-color: rgb(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.65);
     padding: 20px;
 
     .stat-line {

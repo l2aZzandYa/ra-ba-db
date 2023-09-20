@@ -31,7 +31,7 @@
 .filters,
 .grid {
     padding: 14px;
-    background-color: rgb(0, 0, 0, 0.65);
+    //background-color: rgba(0, 0, 0, 0.65);
     color: #fff;
     transition: all .3s ease-in;
 }
@@ -82,6 +82,7 @@
     height: vmp.$cardHeight;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 
     .name {
         @include mhp.centerC();
@@ -102,7 +103,7 @@
     }
 
     &:not(:hover) {
-        .hover {
+        .hover, .name {
             display: none
         }
     }
@@ -205,7 +206,7 @@ h1 {
 .thumb {
     width: 30px;
     height: 28px;
-    background-color: rgb(200, 195, 195);
+    background-color: rgba(200, 195, 195);
     border-radius: 999px;
     color: #000;
     display: flex;
@@ -214,7 +215,7 @@ h1 {
 }
 
 .track {
-    background-color: rgb(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     height: 5px;
     border-radius: 999px;
     height: 8px;
@@ -222,7 +223,7 @@ h1 {
 
     &.track-0,
     &.track-2 {
-        background-color: rgb(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.8);
     }
 }
 

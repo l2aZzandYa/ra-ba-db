@@ -1,7 +1,19 @@
-const Student = ({ key, student, setStudent }) => {
+import { createSearchParams, useNavigate } from "react-router-dom";
+
+const StudentThumb = ({ key, student }) => {
+    const navigate = useNavigate(),
+    openStudent = (id) => {
+        if (!id) return;
+        navigate({
+            pathname: '/student',
+            search: createSearchParams({
+                id: id
+            }).toString()
+        });
+    };
     return (
         <div className="student-card"
-            onClick={() => setStudent(student)}
+            onClick={() => openStudent(student?.Id)}
             data-id={student.Id}
             data-name={student.Name}>
             <img src={`${process.env.PUBLIC_URL}/images/student/collection/${student.Id}.webp`}
@@ -32,4 +44,4 @@ const Student = ({ key, student, setStudent }) => {
     );
 };
 
-export default Student;
+export default StudentThumb;

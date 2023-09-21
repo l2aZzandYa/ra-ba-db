@@ -1,13 +1,14 @@
 import Students from '../services/Students';
-import Student from './Student';
+import StudentThumb from './StudentThumb';
 import Filters from "../components/Filters";
 import useStorage from "../hooks/useStorage";
 import useStorageRaw from "../hooks/useStorageRaw";
 import _ from 'lodash';
 import { useState } from 'react';
 import useOutsideClick from '../hooks/useOutsideClick';
+import Header from '../components/Header';
 
-const StudentList = ({ setStudent }) => {
+const StudentList = () => {
     const [data] = Students(),
         [filterState, setFilterState] = useState(),
         [conditions, setConditions] = useStorage('schale_filter_conditions', {}),
@@ -21,10 +22,7 @@ const StudentList = ({ setStudent }) => {
 
     return (
         <section className={`main ${filterState ? 'filter-active' : ''}`} style={styles}>
-            <div className='filter-icon' onClick={() => setFilterState(true)}>
-                <img src={`${process.env.PUBLIC_URL}/images/icon/schaledb-192.png`}
-                    width={`40px`} height={`40px`} />
-            </div>
+            <Header {...{ setFilterState }} />
             <Filters {...{ conditions, setConditions, filterRef }} />
             <section className='grid'>
                 {data?.filter(student => !conditions.name
@@ -42,7 +40,7 @@ const StudentList = ({ setStudent }) => {
                         || student.ArmorType.toLowerCase() === conditions.defenseType.toLowerCase())
                     .filter(student => !conditions.owned
                         || _.indexOf(owned, student.Id) !== -1)
-                    .map((student, i) => <Student {...{ student, setStudent }} key={i} />)}
+                    .map((student, i) => <StudentThumb {...{ student }} key={i} />)}
             </section>
         </section>
     );

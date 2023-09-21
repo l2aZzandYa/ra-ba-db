@@ -9,13 +9,13 @@ import Student from './features/students/pages/Student';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Homepage />
   },
   {
     path: "/student",
     element: <Student />,
   },
-]);
+], { basename: process.env.PUBLIC_URL });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

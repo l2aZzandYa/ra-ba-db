@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/ra-ba-db/static/css/main.231dd519.css",
-    "main.js": "/ra-ba-db/static/js/main.6b41b268.js",
-    "index.html": "/ra-ba-db/index.html",
-    "main.231dd519.css.map": "/ra-ba-db/static/css/main.231dd519.css.map",
-    "main.6b41b268.js.map": "/ra-ba-db/static/js/main.6b41b268.js.map"
+    "main.css": "/static/css/main.231dd519.css",
+    "main.js": "/static/js/main.4bfee98f.js",
+    "index.html": "/index.html",
+    "main.231dd519.css.map": "/static/css/main.231dd519.css.map",
+    "main.4bfee98f.js.map": "/static/js/main.4bfee98f.js.map"
   },
   "entrypoints": [
     "static/css/main.231dd519.css",
-    "static/js/main.6b41b268.js"
+    "static/js/main.4bfee98f.js"
   ]
 }

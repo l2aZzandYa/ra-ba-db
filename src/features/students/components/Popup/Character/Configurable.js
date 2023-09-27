@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
@@ -108,7 +108,7 @@ const Configurable = ({ student, studentConfig, setStudentConfig, storage, setSt
                         ariaValuetext={state => `Level ${state.valueNow}`}
                         renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
                         onChange={(value, i) => updateStorage(`level`, value)}
-                        value={[_.get(studentConfig, `level.0`, 1), _.get(studentConfig, `level.1`, 85)]}
+                        value={[_.get(studentConfig, `level.0`, 1), _.get(studentConfig, `level.1`, maxStudentLevel)]}
                     />
                     <span className="stat">Lv.{_.get(studentConfig, `level.0`, 1)}</span>
                 </div>

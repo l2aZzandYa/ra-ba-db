@@ -1,4 +1,3 @@
-@use './filters';
 @use './view';
 @use './variables' as vmp;
 @use './mixins' as mhp;
@@ -50,6 +49,10 @@ header {
     top: 6px;
     left: 10px;
     cursor: pointer;
+
+    @include mhp.desktop {
+        display: none !important;
+    }
 }
 
 .filters,
@@ -64,8 +67,33 @@ header {
     position: absolute;
     top: 75px;
     left: -270px;
+    z-index: 2;
     margin-right: 30px;
     width: 270px;
+    padding-right: 2rem;
+    text-align: left;
+
+    @include mhp.desktop {
+        position: static;
+    }
+
+    > div {
+        margin-bottom: 20px;
+    }
+
+    .label {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .control {
+        display: flex;
+        
+        > *:hover {
+            cursor: pointer;
+        }
+    }
 }
 
 .grid {
@@ -75,6 +103,11 @@ header {
     gap: vmp.$gap;
     flex: 1;
     align-content: baseline;
+
+    @include mhp.desktop {
+        transform: translateX(0) !important;
+    }
+
 }
 
 .filter-active {
@@ -84,6 +117,19 @@ header {
 
     .grid {
         transform: translateX(290px);
+    }
+
+    .filters-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+    
+        @include mhp.desktop {
+            display: none;
+        }
     }
 }
 
@@ -99,6 +145,15 @@ header {
     .filter-icon {
         display: none !important;
     }
+}
+
+input[type="text"], input[type="search"], input[type="number"] {
+    @include mhp.inputText();
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
 .student-card {
@@ -217,9 +272,14 @@ img {
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 600;
     margin-bottom: 10px;
+
+    @include mhp.desktop {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
 }
 
 .break {

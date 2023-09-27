@@ -8,12 +8,6 @@
     >div {
         padding: 20px;
     }
-
-    .studentName {
-        display: inline-block;
-        vertical-align: middle;
-        font-style: italic;
-    }
 }
 
 .character-image {
@@ -27,6 +21,36 @@
     padding: 20px;
     position: relative;
     z-index: 1;
+
+    .name {
+        display: flex;
+        flex-flow: column;
+
+        @include mc.desktop {
+            flex-flow: row;
+            align-items: center;
+        }
+    }
+
+    .studentName {
+        display: inline-block;
+        vertical-align: middle;
+        font-style: italic;
+        order: 2;
+
+        @include mc.desktop {
+            order: 0;
+        }
+    }
+
+    .rc-switch.owned-switch {
+        margin-left: 0;
+        margin-bottom: 8px;
+
+        @include mc.desktop {
+            margin-left: 20px;
+        }
+    }
 }
 
 .stat-control {
@@ -47,6 +71,7 @@
         color: #000;
         text-transform: uppercase;
         justify-content: center;
+        border-radius: 5px;
 
         &:hover,
         &.selected {
@@ -262,9 +287,12 @@
 }
 
 .stats-table {
-    @include mc.grid(none, repeat(2, 1fr), 10px, 10px, 20px);
     background-color: rgba(0, 0, 0, 0.65);
     padding: 20px;
+
+    @include mc.desktop {
+        @include mc.grid(none, repeat(2, 1fr), 10px, 10px, 20px);
+    }
 
     .stat-line {
         display: flex;
@@ -287,13 +315,94 @@
 }
 
 .configurable {
-    > .row.flex-one-line {
+    >.row.flex-one-line {
         flex-direction: column;
     }
 
     @include mc.desktop {
-        > .row.flex-one-line {
+        >.row.flex-one-line {
             flex-direction: row;
         }
+    }
+}
+
+.skill-wrapper {
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 15px;
+
+    strong {
+        color: rgb(255, 46, 64);
+    }
+}
+
+.skill-basic {
+    display: flex;
+    flex-flow: row;
+}
+
+.skill-icon {
+    background-color: rgb(159, 10, 23);
+    border-radius: 999px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.skill-cost {
+    span {
+        font-style: italic;
+        margin-right: 6px;
+    }
+}
+
+.ex-skill {
+    .skill-cost {
+        span {
+            &:first-child:after {
+                content: '・';
+            }
+        }
+    }
+}
+
+.skill-levels {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 5px 10px;
+
+    .horizontal-slider {
+        flex-grow: 1;
+        height: 30px;
+    }
+
+    .stat {
+        margin: 0 0 0 10px;
+    }
+
+    .track {
+        background-color: rgba(255, 255, 255, 0.5);
+    
+        &.track-0,
+        &.track-2 {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    }
+}
+
+.stat-buff {
+    background-color: rgba(159, 10, 23, 0.4);
+    margin: 0;
+
+    img {
+        margin-right: 5px;
     }
 }

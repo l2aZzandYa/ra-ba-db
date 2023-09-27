@@ -5,6 +5,7 @@ import 'rc-switch/assets/index.css';
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Homepage from './features/students/pages/Homepage';
 import Student from './features/students/pages/Student';
+import fetchStudents from './features/students/services/AsyncStudents';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,8 @@ const router = createBrowserRouter([
   {
     path: "/student",
     element: <Student />,
+    loader: fetchStudents,
+    id: 'students'
   },
 ], { basename: process.env.PUBLIC_URL });
 

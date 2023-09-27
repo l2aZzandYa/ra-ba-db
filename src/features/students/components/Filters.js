@@ -1,3 +1,4 @@
+import React from 'react';
 import SearchBar from "./Filters/StudentName";
 import Type from "./Filters/SquadType";
 import TacticRole from "./Filters/TacticRole";
@@ -15,15 +16,18 @@ const Filters = ({ conditions, setConditions, filterRef }) => {
         setConditions(newConditions);
     };
     return (
-        <section className="filters" ref={filterRef}>
-            <SearchBar {...{ get, set }} />
-            <Owned {...{ get, set }} />
-            <Type {...{ get, set }} />
-            <TacticRole {...{ get, set }} />
-            <Rarity {...{ get, set }} />
-            <AttackType {...{ get, set }} />
-            <DefenseType {...{ get, set }} />
-        </section>
+        <React.Fragment>
+            <div className="filters-overlay"></div>
+            <section className="filters" ref={filterRef}>
+                <SearchBar {...{ get, set }} />
+                <Owned {...{ get, set }} />
+                <Type {...{ get, set }} />
+                <TacticRole {...{ get, set }} />
+                <Rarity {...{ get, set }} />
+                <AttackType {...{ get, set }} />
+                <DefenseType {...{ get, set }} />
+            </section>
+        </React.Fragment>
     )
 }
 

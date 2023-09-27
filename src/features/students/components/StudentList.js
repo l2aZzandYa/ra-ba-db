@@ -1,4 +1,4 @@
-import Students from '../services/Students';
+import DataFetcher from '../services/DataFetcher';
 import StudentThumb from './StudentThumb';
 import Filters from "../components/Filters";
 import useStorage from "../hooks/useStorage";
@@ -9,7 +9,7 @@ import useOutsideClick from '../hooks/useOutsideClick';
 import Header from '../components/Header';
 
 const StudentList = () => {
-    const [data] = Students(),
+    const data = DataFetcher('https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/en/students.min.json'),
         [filterState, setFilterState] = useState(),
         [conditions, setConditions] = useStorage('schale_filter_conditions', {}),
         owned = useStorageRaw('schale_character_owned', []),

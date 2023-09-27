@@ -4,6 +4,7 @@ import t from "../../../i18n";
 import Attributes from "./Attributes";
 import _ from 'lodash';
 import Switch from 'rc-switch';
+import Skills from "./Skills";
 
 const CharacterStats = ({ student }) => {
     const [state, setState] = useState(0),
@@ -37,21 +38,14 @@ const CharacterStats = ({ student }) => {
         StatRender = () => {
             switch (state) {
                 case 1:
-                    return <Skills />;
+                    return <Skills {...{ student }} />;
                 case 2:
-                    return <Weapon />;
+                    return <Weapon {...{ student }} />;
                 case 3:
-                    return <Profile />;
+                    return <Profile {...{ student }} />;
                 default:
                     return <Attributes {...{ student }} />;
             }
-        },
-        Skills = () => {
-            return (
-                <div className="skills">
-                    <div className="stat name">skills</div>
-                </div>
-            );
         },
         Weapon = () => {
             return (

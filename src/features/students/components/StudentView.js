@@ -1,13 +1,12 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useRouteLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Character from "./Popup/Character";
-import Students from '../services/Students';
 import _ from "lodash";
 
 const StudentView = () => {
     const [searchParams] = useSearchParams(),
         [student, setStudent] = useState({}),
-        [students] = Students(),
+        students = useRouteLoaderData('students'),
         id = searchParams.get('id');
 
     useEffect(() => {
